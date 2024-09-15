@@ -102,7 +102,7 @@ SELECT
     / avg_marketing_spend, 2) AS romi
 FROM cte_revenue;
 
--- 2.1.2. Marketing spend impact on revenue by `Product Category`,
+-- 2.1.2. Marketing spend impact on revenue by `Product Category`
 
 WITH cte_revenue AS (
     SELECT
@@ -144,7 +144,7 @@ SELECT
 FROM cte_revenue
 ORDER BY romi DESC;
 
--- 2.1.4. Marketing spend impact on revenue by `Holiday Effect`,
+-- 2.1.4. Marketing spend impact on revenue by `Holiday Effect`
 
 WITH cte_revenue AS (
     SELECT
@@ -165,7 +165,7 @@ SELECT
 FROM cte_revenue
 ORDER BY romi DESC;
 
--- 2.1.5. Marketing spend impact on revenue by `year`,
+-- 2.1.5. Marketing spend impact on revenue by `year`
 
 WITH cte_revenue AS (
     SELECT
@@ -186,7 +186,6 @@ SELECT
 FROM cte_revenue
 ORDER BY romi DESC;
 
-SELECT * FROM retail_sales_staging;
 -- 2.2. Effectiveness of discount strategy
 -- 2.2.1. Discount impact on revenue
 
@@ -254,7 +253,7 @@ FROM retail_sales_staging
 GROUP BY `Holiday Effect`
 ORDER BY average_revenue DESC;
 
--- 2.3.3. Sales trend by day of the week
+-- 2.3.3. Sales trend by `Day of the Week`
 
 SELECT
     `Day of the Week`,
@@ -263,7 +262,7 @@ FROM retail_sales_staging
 GROUP BY `Day of the Week`
 ORDER BY average_revenue DESC;
 
--- 2.3.4. Sales by `Product Category`
+-- 2.3.4. Sales trend by `Product Category`
 
 SELECT 
 	`Product Category`,
@@ -272,7 +271,7 @@ FROM retail_sales_staging
 GROUP BY `Product Category`
 ORDER BY total_revenue DESC;
 
--- 2.3.5. Sales by `Store Location`
+-- 2.3.5. Sales trend by `Store Location`
 
 SELECT 
 	`Store Location`,

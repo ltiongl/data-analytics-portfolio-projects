@@ -10,14 +10,14 @@ These approches explore the retail sales data from different perspectives, provi
 ## Key Objectives
 * **Marketing analysis**: evaluate the impact of marketing spend and discount strategy on sales.
 * **Seasonal trend analysis**: examine how holiday and days in a week impact sales.
-* **Predictive modeling**: build and evaluate models to forecast future sales based on historical data.
+* **Predictive modeling**:build and evaluate models to forecast future sales based on historical data.
 * **Visualization dashboard**: create visualization dashboard to summarize the analysis findings.
 
 ## Software and Tools
-Python version: `Python 3.9.10`  
-Python packages: `pandas`, `matplotlib`, `seaborn`, `sklearn`   
-Tableau: `Tableau Desktop Public Edition 2024.2.0`    
-MySQL Workbench: `MySQL Workbench Version 8.0.38`  
+* **Python version**: `Python 3.9.10`  
+* **Python packages**: `pandas`, `matplotlib`, `seaborn`, `sklearn`   
+* **Tableau**: `Tableau Desktop Public Edition 2024.2.0`    
+* **MySQL Workbench**: `MySQL Workbench Version 8.0.38`  
 
 ## Data Source
 The dataset is obtained from `Kaggle`: [Retail Sales Data with Seasonal Trends & Marketing](https://www.kaggle.com/datasets/abdullah0a/retail-sales-data-with-seasonal-trends-and-marketing).  
@@ -25,22 +25,24 @@ The dataset is obtained from `Kaggle`: [Retail Sales Data with Seasonal Trends &
 ---
 
 ## Table of Contents
-* [Approach 1: MySQL + Tableau](#approach-1-mysql--tableau)
+* [Analyzing Data using MySQL + Tableau](#approach-1-analyzing-data-using-mysql--tableau)
   - [Data Cleaning](data-cleaning)
   - [Data Exploration / EDA](#data-exploration--eda)
   - [Data Visualization](#data-visualization)
-* [Approach 2: Python](#approach-2-python)
+  - [Summary of Findings from MySQL and Tableau](#summary-of-findings-from-mysql-and-tableau-analysis)
+* [Approach 2: Analyzing Data using Python](#approach-2-analyzing-data-using-python)
   - [Data Cleaning and Initial Data Exploration](#data-cleaning-and-initial-data-exploration)
   - [Data Exploration / EDA](#data-exploration--eda-1)
   - [Data Modeling](#data-modeling)
+  - [Summary of Findings from Python](#summary-of-findings-from-python)
 * [Conclusion](#conclusion)
     
 ---
 
-## Approach 1: MySQL + Tableau
+## Approach 1: Analyzing Data using MySQL + Tableau
 
 ### Data Cleaning
-##### 1. Verify duplicated lines
+#### 1. Verify duplicated lines
 ```mysql 
 WITH cte_duplicates AS (
     SELECT
@@ -55,9 +57,9 @@ SELECT
 FROM cte_duplicates
 WHERE row_num > 1;
 ```
-> * There is no duplicated data. 
+> There is no duplicated data. 
 
-##### 2. Standardize the data
+#### 2. Standardize the data
 ```mysql
 SELECT * FROM retail_sales_staging;
 
@@ -96,9 +98,9 @@ MODIFY COLUMN `Date` DATE;
 
 SELECT * FROM retail_sales_staging;
 ```
-> * The data doesn't have stadardization issue, except the data type of `Date` is modified to `DATE` format.
+> The data doesn't have stadardization issue, except the data type of `Date` is modified to `DATE` format.
 
-##### 3. Verify null data  
+#### 3. Verify null data  
 ```mysql
 SELECT * 
 FROM retail_sales_staging
@@ -114,15 +116,20 @@ WHERE
     `Day of the Week` IS NULL OR
     `Holiday Effect` IS NULL;
 ```
-> * Null data doesn't exist.
+> Null data doesn't exist.
 
-##### Data cleaning summary
+#### 4. Data cleaning summary
+* The dataset doesn't contain any duplicated or null data.
+* There is no standardization issu in the dataset.
+* The data type of `Date` is changed to `DATE` data type.
 
 ### Data Exploration / EDA
-The data exploration focuses on analysing effectiveness of marketing spend and discount strategy.
+The data exploration focuses on analysing the effectiveness of marketing spend and discount strategy.
 
-#### Effectiveness of marketing spend
-##### 1. Marketing spend impact on sales revenue
+#### 1. Effectiveness of marketing spend
+The effectiveness of marketing spend is evaluated across the entire dataset, and further analyzed by product category, day of the week, holiday effects, and year.
+
+#### 1.1 Marketing spend impact on the entire sales revenue 
 ```mysql
 WITH cte_revenue AS (
     SELECT
@@ -141,7 +148,7 @@ FROM cte_revenue;
 ```
 <img width="622" alt="image" src="https://github.com/user-attachments/assets/6268d58f-e6f8-498f-a17a-8d594da2e15f">
 
-##### 2. Marketing spend impact on sales revenue by product category
+#### 1.2. Marketing spend impact on sales revenue by product category
 ```mysql
 WITH cte_revenue AS (
     SELECT
@@ -164,7 +171,7 @@ ORDER BY romi DESC;
 ```
 <img width="762" alt="image" src="https://github.com/user-attachments/assets/cda9fdc6-f405-4e95-b14b-f601d05c504d">
 
-##### 3. Marketing spend impact on sales revenue by day of the week
+#### 1.3. Marketing spend impact on sales revenue by day of the week
 ```mysql
 WITH cte_revenue AS (
     SELECT
@@ -187,7 +194,7 @@ ORDER BY romi DESC;
 ```
 <img width="751" alt="image" src="https://github.com/user-attachments/assets/428af406-f740-4f05-9447-15518c687fd6">
 
-##### 4. Marketing spend impact on sales revenue by holiday effect
+#### 1.4. Marketing spend impact on sales revenue by holiday effect
 ```mysql
 WITH cte_revenue AS (
     SELECT
@@ -210,7 +217,7 @@ ORDER BY romi DESC;
 ```
 <img width="735" alt="image" src="https://github.com/user-attachments/assets/88f34c51-dc4a-4e46-bcfc-196d87198a84">
 
-##### 5. Marketing spend impact on sales revenue by year
+#### 1.5. Marketing spend impact on sales revenue by year
 ```mysql
 WITH cte_revenue AS (
     SELECT
@@ -233,8 +240,14 @@ ORDER BY romi DESC;
 ```
 <img width="669" alt="image" src="https://github.com/user-attachments/assets/3e30a4c0-b0a0-4e6e-a752-516e96998c91">
 
-#### Effectiveness of discount strategy
-##### 1. Discount impact on sales revenue
+#### 1.6. Effectiveness of marketing spend summary
+* The ROMI (Return on Marketing Investment) metric only shows positive results when marketing spend is applied during holidays, suggesting that seasonal marketing is effective.
+* The ROMI result for 2024 is not considered, as there is only one day of data available for that year.
+
+#### 2. Effectiveness of discount strategy
+The effectiveness of discount strategy is evaluated across the entire dataset, and further analyzed by product category, day of the week, holiday effects, and year.
+
+#### 2.1. Discount impact on the entire sales revenue
 ```mysql
 SELECT
     ROUND(AVG(CASE WHEN `Discount Percentage` > 0 THEN `Sales Revenue (USD)` ELSE 0 END), 2) AS avg_revenue_with_discount,
@@ -245,7 +258,7 @@ FROM
 
 <img width="451" alt="image" src="https://github.com/user-attachments/assets/15c4e215-8d74-4992-be27-6f452a4923d9">
 
-##### 2. Discount impact on sales revenue by product category
+#### 2.2. Discount impact on sales revenue by product category
 ```mysql
 SELECT
     `Product Category`,
@@ -258,7 +271,7 @@ ORDER BY avg_revenue_with_discount DESC;
 ```
 <img width="591" alt="image" src="https://github.com/user-attachments/assets/1a807be4-b2ff-4475-8784-5eafc692d860">
 
-##### 3. Discount impact on sales revenue by day of the week
+#### 2.3. Discount impact on sales revenue by day of the week
 ```mysql
 SELECT
     `Day of the Week`,
@@ -271,7 +284,7 @@ ORDER BY avg_revenue_with_discount DESC;
 ```
 <img width="580" alt="image" src="https://github.com/user-attachments/assets/b0f169bb-6e3a-4b55-9d33-c458f07e431a">
 
-##### 4. Discount impact on sales revenue by holiday effect
+#### 2.4. Discount impact on sales revenue by holiday effect
 ```mysql
 SELECT
     `Holiday Effect`,
@@ -284,8 +297,14 @@ ORDER BY avg_revenue_with_discount DESC;
 ```
 <img width="564" alt="image" src="https://github.com/user-attachments/assets/e1928d12-adba-4f61-b61e-8cc2c6470314">
 
-#### Sales revenue trend
-##### 1. Sales revenue trend over years
+#### 2.5. Effectiveness of discount strategy summary
+* Days with a discount strategy exhibit lower average sales revenue compared to days without a discount strategy across all metrics.
+* The discount strategy does not have a positive impact on sales revenue.
+  
+#### 3. Sales revenue trend
+This section explores the sales revenue trend by year, holiday effect, day of the week, product category, and store location.
+
+#### 3.1. Sales revenue trend over years
 ```mysql
 SELECT
     YEAR(`Date`) AS `year`,
@@ -303,7 +322,7 @@ FROM retail_sales_staging;
 <img width="163" alt="image" src="https://github.com/user-attachments/assets/b7f800dd-6054-498e-9474-3537a2304ff4">
 <img width="190" alt="image" src="https://github.com/user-attachments/assets/92721a25-b1ce-4424-a5fe-5dad368c05ba">
 
-##### 2. Seasonal sales revenue trend
+#### 3.2. Seasonal sales revenue trend
 ```mysql
 SELECT
     `Holiday Effect`,
@@ -314,7 +333,7 @@ ORDER BY average_revenue DESC;
 ```
 <img width="253" alt="image" src="https://github.com/user-attachments/assets/7c359dcb-1977-42ea-acc5-f55b94b60807">
 
-##### 3. Sales revenue trend by day of the week
+#### 3.3. Sales revenue trend by day of the week
 ```mysql
 SELECT
     `Day of the Week`,
@@ -326,7 +345,7 @@ ORDER BY average_revenue DESC;
 <img width="270" alt="image" src="https://github.com/user-attachments/assets/a22294d7-f56e-4323-ab93-6a69ab12ce24">
 
 
-##### 4. Sales revenue trend by product category
+#### 3.4. Sales revenue trend by product category
 ```mysql
 SELECT
 	`Product Category`,
@@ -337,7 +356,7 @@ ORDER BY total_revenue DESC;
 ```
 <img width="256" alt="image" src="https://github.com/user-attachments/assets/e4c886eb-2e3e-4cbe-bf96-6500b22d34cf">
    
-##### 5. Sales revenue trend by store location
+#### 3.5. Sales revenue trend by store location
 ```mysql
 SELECT 
 	`Store Location`,
@@ -349,24 +368,42 @@ LIMIT 5;
 ```
 <img width="235" alt="image" src="https://github.com/user-attachments/assets/c31faad1-547a-4015-921a-3af3fc45615e">
 
-##### Data exploration summary
+#### 3.6. Sales revenue trend summary
+* Sales revenue for 2022 and 2023 remained relatively consistent, indicating stable performance across both years.
+* Sales revenue for 2024 is excluded from the analysis due to the limited data, which only includes the first day of the year.
+* The seasonal sales trend indicates that holidays generate nearly double the sales revenue compared to non-holiday periods.
+* Sales revenue is highest on Sundays and Saturdays, outperforming weekdays.
+* Electronics and furniture are the top contributors to sales revenue, followed by clothing and groceries.
+* The stores in Congo, Korea, and Anguilla lead in sales revenue generation.
 
+#### 4. Data exploration summary
+* The analysis reveals that the ROMI (Return on Marketing Investment) metric is positively impacted only when marketing spend is allocated during holidays, indicating that seasonal marketing strategies are effective. 
+* Conversely, the implementation of a discount strategy consistently results in lower average sales revenue compared to periods without discounts, suggesting that discount strategies do not positively influence sales revenue.
 
 ### Data Visualization
-The data is visualized in an interactive Tableau dashboard, which you can explore [here](https://public.tableau.com/app/profile/lily.tiong/viz/retail_sales_17264041202470/SalesDashboard?publish=yes).   
+The data is visualized in an interactive Tableau dashboard, which you can explore [here](https://public.tableau.com/app/profile/lily.tiong/viz/retail_sales_17264041202470/SalesDashboard?publish=yes).     
+
+The dashboard presents Key Performance Indicators (KPIs) for `Total Sales Revenue` and `Total Marketing Spend`, with a performance comparison between 2022 and 2023. Given the available data is limited to these two years, the analysis focuses exclusively on these metrics.   
+   
+The Total Sales Revenue KPI indicates a nearly flat growth rate, with sales revenue showing almost no increase between 2022 and 2023. In contrast, total marketing spend decreased by approximately 0.04% in 2023 compared to 2022.   
+   
+The overall ROMI (Return on Marketing Investment) metric is negative for both years. In 2022, ROMI was positive for electronics, during holidays, and on Sundays and Tuesdays. Conversely, in 2023, ROMI was positive for clothing, and on Thursdays, Fridays, and Saturdays. There is no consistent trend in ROMI across the two years.  
+   
+Regarding the impact of discount strategies, only the holiday period in 2023 showed a slight improvement in sales revenue, though the increase was not substantial.    
+
 <kbd>
 <img src="https://github.com/user-attachments/assets/5b5f9313-9980-4504-8b9a-63a03073989b">
 </kbd> 
-
+    
 <kbd>
 <img src="https://github.com/user-attachments/assets/8720141f-3b18-4579-938a-ed79cfdd7c2c">
 </kbd> 
 
-##### Data visualization summary
+### Summary of Findings from MySQL and Tableau Analysis
+* The analysis indicates that while marketing spend and discount strategies occasionally yield positive results in specific instances, their overall impact on sales revenue is minimal and lacks consistency over time. This suggests that neither marketing spend nor discount strategies are effectively driving substantial increases in sales revenue.  
+* However, given that the data is limited to only two years, these conclusions may not be entirely conclusive. Notably, marketing spend during holidays appears to have a more favorable impact on sales revenue, suggesting that focusing on holiday promotions could be a promising strategy for further exploration.   
 
-
-
-## Approach 2: Python
+## Approach 2: Analyzing Data using Python
 
 ### Data Cleaning and Initial Data Exploration
 ```python
@@ -391,6 +428,7 @@ df.info()
     dtypes: bool(1), float64(1), int64(4), object(5)
     memory usage: 2.3+ MB
 
+#### 1. Verify null data
 ```python
 df.isnull().sum()
 ```
@@ -407,13 +445,15 @@ df.isnull().sum()
     Holiday Effect           0
     dtype: int64
 
+#### 2. Verify duplicated lines
 ```python
 df.duplicated().sum()
 ```
     np.int64(0)
     
-There is no null data and duplicated data.
+> There is no null data and duplicated data.
 
+#### 3. Fix the data
 ```python
 # Change `Date` to Date format
 df['Date'] = pd.to_datetime(df['Date'], format='%Y-%m-%d')
@@ -441,8 +481,9 @@ df.info()
     dtypes: bool(1), datetime64[ns](1), float64(1), int64(4), object(4)
     memory usage: 2.3+ MB
 
-`Date` data type has been updated to `datetime64`.
+> `Date` data type has been updated to `datetime64`.
 
+#### 4. Initial data exploaration
 ```python
 # Initial Data Exploration
 df.head()
@@ -664,11 +705,11 @@ df['Product Category'].nunique()
 ```
     4
     
-##### Data cleaning summary
-1. No null value or duplicated value is found in the dataset.
-2. `Date` column data type is updated to `datetime64`.
-3. There are 30,000 rows and 11 columns in the dataset.
-4. There is only one unique value in `Store ID`, hence the column can be ignored and dropped.
+##### 5. Data cleaning summary
+*  No null value or duplicated value is found in the dataset.
+*  `Date` column data type is updated to `datetime64`.
+*  There are 30,000 rows and 11 columns in the dataset.
+*  There is only one unique value in `Store ID`, hence the column can be ignored and dropped.
 
 ```python
 # Drop column 'Store ID'
@@ -676,7 +717,9 @@ df = df.drop('Store ID', axis=1)
 ```
 
 ### Data Exploration / EDA
+The data is analyzed through univariate, bivariate, and multivariate approaches, covering both numerical and categorical variables.   
 
+#### 1. Prepration
 ```python
 # Import libraries
 import numpy as np
@@ -701,9 +744,9 @@ categorical_col = ['Product Category', 'Discount Percentage', 'Day of the Week',
 plt.style.use('ggplot')
 ```
 
-#### Univariate Analysis
+#### 2. Univariate Analysis
 
-##### Distribution of Numerical Variables
+#### 2.1. Distribution of Numerical Variables
 ```python
 for col in numerical_col:
     plt.figure(figsize=(10, 5))
@@ -726,9 +769,9 @@ for col in numerical_col:
 <img src="https://github.com/user-attachments/assets/6d0946b0-8f68-4dcf-bf98-f9916c221dd3">
 </kbd>
 
-#### Bivariate Analysis
+#### 3. Bivariate Analysis
 
-##### Box plots of numerical variables vs. categorical variables
+#### 3.1. Box plots of numerical variables vs. categorical variables
 ```python
 for col_c in categorical_col:
     for col_n in numerical_col:
@@ -793,8 +836,8 @@ for col_c in categorical_col:
 <img src="https://github.com/user-attachments/assets/85cf152b-c018-41fb-b352-c11e25446098">
 </kbd>
 
-#### Multivariate Analysis
-##### Pairplot of numerical variales
+#### 4. Multivariate Analysis
+#### 4.1. Pairplot of numerical variales
 ```python
 plt.figure(figsize=(10,5))
 sns.pairplot(df[numerical_col])
@@ -805,7 +848,7 @@ plt.show()
 <img src="https://github.com/user-attachments/assets/4a51af65-f1c3-46ea-9672-7e44bc4e3f1f">
 </kbd>
 
-##### Heatmap of numerical variables
+#### 4.2. Heatmap of numerical variables
 ```python
 # corr = df.select_dtypes(include=[np.number])
 corr = df[numerical_col].corr()
@@ -821,9 +864,9 @@ plt.show()
 <img src="https://github.com/user-attachments/assets/20df6623-7619-45df-aa41-2a3d485f3f52">
 </kbd>
 
-#### Time Series Analysis
+#### 5. Time Series Analysis
 ```python
-# Analysis by hour
+# Analysis by month
 for col in numerical_col:
     plt.figure(figsize=(15, 5))
     df['Year-Month'] = df['Date'].dt.to_period('M')
@@ -852,18 +895,18 @@ for col in numerical_col:
 <img src="https://github.com/user-attachments/assets/b591d886-1a0f-4251-ba46-589655448d01">
 </kbd>
 
-##### Data exploration summary
-1. The distributions of `Units Sold`, `Sales Revenue (USD)`, and `Marketing Spend (USD)` are right-skewed. 
-2. Among the product categories, `Electronics` leads with the highest units sold and sales revenue, followed by `Clothing`, `Furniture`, and `Groceries`. 
-3. In terms of marketing spend, `Electronics` also tops the list, followed by `Groceries`, then `Clothing`, and `Furniture`.
-4. The discount percentage has minimal impact on both units sold and sales revenue. 
-5. There is a slightly higher number of units sold and increased sales revenue on weekends (Saturday and Sunday) compared to weekdays, though the difference is not significant. 
-6. Sales and units sold tend to perform better during holidays, whereas marketing spend appears unaffected by holidays.
-7. From the correlation analysis, only `Sales Revenue (USD)` and `Units Sold` show a notable linear relationship. `Marketing Spend (USD)` does not show a strong correlation with either `Sales Revenue (USD)` or `Units Sold`, suggesting that marketing spend has a limited impact on revenue. This is further supported by the heatmap, where `Marketing Spend (USD)` shows a near-zero correlation with both sales revenue and units sold.
-8. The time series analysis reveals that `Sales Revenue (USD)` reaches its lowest point in February, followed by a consistent rise, peaking in December, likely due to year-end seasonal events. Meanwhile, `Marketing Spend (USD)` also dips in February but remains relatively stable, fluctuating around $62,000 throughout the year.
+#### 6. Data exploration summary
+* The distributions of `Units Sold`, `Sales Revenue (USD)`, and `Marketing Spend (USD)` are right-skewed.
+* Among the product categories, `Electronics` leads with the highest units sold and sales revenue, followed by `Clothing`, `Furniture`, and `Groceries`.
+* In terms of marketing spend, `Electronics` also tops the list, followed by `Groceries`, then `Clothing`, and `Furniture`.
+* The discount percentage has minimal impact on both units sold and sales revenue.
+* There is a slightly higher number of units sold and increased sales revenue on weekends (Saturday and Sunday) compared to weekdays, though the difference is not significant.
+* Sales and units sold tend to perform better during holidays, whereas marketing spend appears unaffected by holidays.
+* From the correlation analysis, only `Sales Revenue (USD)` and `Units Sold` show a notable linear relationship. `Marketing Spend (USD)` does not show a strong correlation with either `Sales Revenue (USD)` or `Units Sold`, suggesting that marketing spend has a limited impact on revenue. This is further supported by the heatmap, where `Marketing Spend (USD)` shows a near-zero correlation with both sales revenue and units sold.
+* The time series analysis reveals that `Sales Revenue (USD)` reaches its lowest point in February, followed by a consistent rise, peaking in December, likely due to year-end seasonal events. Meanwhile, `Marketing Spend (USD)` also dips in February but remains relatively stable, fluctuating around $62,000 throughout the year.
 
 ### Data Modeling
-#### Data Preprocessing
+#### 1. Data preprocessing
 ```python
 # Define Libraries
 
@@ -906,6 +949,8 @@ preprocessor = ColumnTransformer (
     ]
 )
 ```
+#### 2. Model building and running
+
 ```python
 # Define function for data modeling
 
@@ -1050,11 +1095,23 @@ plt.show()
 <img src="https://github.com/user-attachments/assets/1cab472b-0dfa-48ce-a6ef-7c1b9827ec30">
 </kbd>
 
-##### Data modeling results summary 
-The regression models (Linear Regression, Lasso Regression, and Ridge Regression) performed the best among the models tested, each achieving an identical R² score of 0.542.   
-However, the Lasso Regression model slightly outperformed the others, with an RMSE of 1752.215 and an MAE of 1141.092.   
+#### 3. Data modeling results summary 
+* The regression models (`Linear Regression`, `Lasso Regression`, and `Ridge Regression`) performed the best among the models tested, each achieving an identical `R²` score of 0.542.   
+* However, the `Lasso Regression` model slightly outperformed the others, with an `RMSE` of 1752.215 and an `MAE` of 1141.092.   
 Despite these results, the overall model performance is suboptimal, aligning with the findings from the EDA, which revealed weak correlations between the features and the target variable.
 
-## Conclusion
+### Summary of Findings from Python
+* The discount strategy has minimal impact on sales revenue, and marketing spend shows a weak correlation with sales revenue. Neither the discount strategy nor marketing spend is effective in significantly boosting sales revenue.
+* Sales revenue consistently peaks in December and reaches its lowest point in February each year.
+* Weekends generate higher sales revenue compared to weekdays.
+* Although the `Lasso Regression` model outperformed other models in predicting sales revenue, it achieved an R² score of 0.542, which indicates limited effectiveness in modeling.
 
-## Future Works
+## Conclusion
+* Marketing analysis
+  * The analyses conducted using MySQL, Tableau, and Python indicate that neither marketing spend nor discount strategies effectively boost sales revenue. Potential contributing factors may include inefficiencies in marketing expenditures and promotional efforts. Further investigation is needed to identify underlying issues and refine future sales strategies.  
+* Seasonal trend analysis
+  * Sales revenue significantly increases during holidays and weekends. This trend highlights opportunities to boost revenue by focusing on these key times.
+* Predictive model
+  * While the `Lasso Regression` model provides a framework for predicting future sales revenue, its predictive performance is currently suboptimal. Additional research and model development are necessary to identify a more accurate and reliable forecasting approach.
+  
+

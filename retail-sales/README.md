@@ -120,7 +120,7 @@ WHERE
 
 #### 4. Data cleaning summary
 * The dataset doesn't contain any duplicated or null data.
-* There is no standardization issu in the dataset.
+* There is no standardization issue in the dataset.
 * The data type of `Date` is changed to `DATE` data type.
 
 ### Data Exploration / EDA
@@ -146,7 +146,7 @@ SELECT
     / avg_marketing_spend, 2) AS romi
 FROM cte_revenue;
 ```
-<img width="622" alt="image" src="https://github.com/user-attachments/assets/6268d58f-e6f8-498f-a17a-8d594da2e15f">
+<img width="54" alt="image" src="https://github.com/user-attachments/assets/fa1f0a61-d967-4d58-b15f-a2a0fd5d73a9">
 
 #### 1.2. Marketing spend impact on sales revenue by product category
 ```mysql
@@ -169,7 +169,7 @@ SELECT
 FROM cte_revenue
 ORDER BY romi DESC;
 ```
-<img width="762" alt="image" src="https://github.com/user-attachments/assets/cda9fdc6-f405-4e95-b14b-f601d05c504d">
+<img width="193" alt="image" src="https://github.com/user-attachments/assets/ae44caea-bda9-40a5-86e3-ec3a79293ec6">
 
 #### 1.3. Marketing spend impact on sales revenue by day of the week
 ```mysql
@@ -192,7 +192,7 @@ SELECT
 FROM cte_revenue
 ORDER BY romi DESC;
 ```
-<img width="751" alt="image" src="https://github.com/user-attachments/assets/428af406-f740-4f05-9447-15518c687fd6">
+<img width="183" alt="image" src="https://github.com/user-attachments/assets/dc79ccb8-5fc5-412c-8ec9-32d37de38670">
 
 #### 1.4. Marketing spend impact on sales revenue by holiday effect
 ```mysql
@@ -215,7 +215,7 @@ SELECT
 FROM cte_revenue
 ORDER BY romi DESC;
 ```
-<img width="735" alt="image" src="https://github.com/user-attachments/assets/88f34c51-dc4a-4e46-bcfc-196d87198a84">
+<img width="166" alt="image" src="https://github.com/user-attachments/assets/0e5a6f54-25e9-4d1f-8b23-0fac7f4335c7">
 
 #### 1.5. Marketing spend impact on sales revenue by year
 ```mysql
@@ -238,7 +238,7 @@ SELECT
 FROM cte_revenue
 ORDER BY romi DESC;
 ```
-<img width="669" alt="image" src="https://github.com/user-attachments/assets/3e30a4c0-b0a0-4e6e-a752-516e96998c91">
+<img width="100" alt="image" src="https://github.com/user-attachments/assets/4b1f803b-7731-404d-a967-a8ce351e7d11">
 
 #### 1.6. Effectiveness of marketing spend summary
 * The ROMI (Return on Marketing Investment) metric only shows positive results when marketing spend is applied during holidays, suggesting that seasonal marketing is effective.

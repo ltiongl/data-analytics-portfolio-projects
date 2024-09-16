@@ -959,11 +959,11 @@ def evaluate_model(model, X_train, y_train, X_test, y_test, model_name):
 
     # Plot predictions vs actuals 
     plt.figure(figsize=(10, 5))
-    plt.scatter(y_test, y_pred, alpha=0.5, label=f'{model_name}', color='orange')
+    plt.scatter(y_test, y_pred, alpha=0.5, label='Predicted', color='orange')
     plt.xlabel('Actual Sales Revenue (USD)')
     plt.ylabel('Predicted Sales Revenue (USD)')
     plt.title(f'{model_name}: Predicted vs. Actual Sales Revenue')
-    plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], 'r--', lw=2)
+    plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], 'r--', lw=2, label='Actual')
     plt.legend()
     plt.show()
     
@@ -1002,54 +1002,55 @@ for model_name, model in models.items():
 df_results = pd.DataFrame(results)
 ```
 <kbd>
-<img src="https://github.com/user-attachments/assets/f34a14ae-4e02-4368-a54f-ff54723cf8ba">
+<img src="https://github.com/user-attachments/assets/48949b48-f8b4-41a1-8f63-222e1bd44e64">
 </kbd>
-
+<br>
     Linear Regression Model:
     R²: 0.542
     RMSE: 1753.735
     MAE: 1144.072
 
 <kbd>
-<img src="https://github.com/user-attachments/assets/2349952e-90a5-404b-a71a-420cf483a557">
+<img src="https://github.com/user-attachments/assets/5e74e54c-0b97-4472-a861-790e68ce4bb3">
 </kbd>
- 
+<br>
     Lasso Regression Model:
     R²: 0.542
     RMSE: 1752.215
     MAE: 1141.092
 
 <kbd>
-<img src="https://github.com/user-attachments/assets/b8f1e506-8700-4c5d-a798-67add977bb00">
+<img src="https://github.com/user-attachments/assets/def1c87c-d448-43b3-80cd-07ba87723949">
 </kbd>
-    
+
+<br>
     Ridge Regression Model:
     R²: 0.542
     RMSE: 1753.603
     MAE: 1143.667
 
 <kbd>
-<img src="https://github.com/user-attachments/assets/d90f7786-bab2-45d3-9d93-127401961d73">
+<img src="https://github.com/user-attachments/assets/2b05fb4e-dd44-4602-9b81-c4e064836d36">
 </kbd>
-
+<br>
     Random Forest Model:
     R²: 0.469
     RMSE: 1887.285
     MAE: 1204.186
 
 <kbd>
-<img src="https://github.com/user-attachments/assets/97137651-f090-4664-9d5a-74ba61417a5e">
+<img src="https://github.com/user-attachments/assets/8f3c6e4c-5fc2-4560-b4ee-143b871ccffe">
 </kbd>
-
+<br>
     K-Neighbors Regressor Model:
     R²: 0.445
     RMSE: 1930.370
     MAE: 1246.313
 
 <kbd>
-<img src="https://github.com/user-attachments/assets/9bbc6a38-02fd-41e9-a9be-267d02a0c2b2">
+<img src="https://github.com/user-attachments/assets/e553794a-6f44-4305-b6f3-1540cd1a7353">
 </kbd>
-
+<br>
     Gradient Boosting Model:
     R²: 0.504
     RMSE: 1823.641

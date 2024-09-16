@@ -8,10 +8,10 @@ This project analyses the retail sales using two different approaches:
 These approches explore the retail sales data from different perspectives, providing a more comprehensive understanding of the analysis.
 
 ## Key Objectives
-* **Marketing analysis**: evaluate the impact of marketing spend and discount strategy on sales.
-* **Seasonal trend analysis**: examine how holiday and days in a week impact sales.
-* **Predictive modeling**: build and evaluate models to forecast future sales based on historical data.
-* **Visualization dashboard**: create visualization dashboard to summarize the analysis findings.
+* `Marketing analysis`: evaluate the impact of marketing spend and discount strategy on sales.
+* `Seasonal trend analysis`: examine how holiday and days in a week impact sales.
+* `Predictive modeling`: build and evaluate models to forecast future sales based on historical data.
+* `Visualization dashboard`: create visualization dashboard to summarize the analysis findings.
 
 ## Software and Tools
 * **Python version**: `Python 3.9.10`  

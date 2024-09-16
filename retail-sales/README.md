@@ -1004,7 +1004,8 @@ df_results = pd.DataFrame(results)
 <kbd>
 <img src="https://github.com/user-attachments/assets/48949b48-f8b4-41a1-8f63-222e1bd44e64">
 </kbd>
-<br>
+<br><br>
+
     Linear Regression Model:
     R²: 0.542
     RMSE: 1753.735
@@ -1013,7 +1014,8 @@ df_results = pd.DataFrame(results)
 <kbd>
 <img src="https://github.com/user-attachments/assets/5e74e54c-0b97-4472-a861-790e68ce4bb3">
 </kbd>
-<br>
+<br><br>
+
     Lasso Regression Model:
     R²: 0.542
     RMSE: 1752.215
@@ -1022,8 +1024,8 @@ df_results = pd.DataFrame(results)
 <kbd>
 <img src="https://github.com/user-attachments/assets/def1c87c-d448-43b3-80cd-07ba87723949">
 </kbd>
+<br><br>
 
-<br>
     Ridge Regression Model:
     R²: 0.542
     RMSE: 1753.603
@@ -1032,7 +1034,8 @@ df_results = pd.DataFrame(results)
 <kbd>
 <img src="https://github.com/user-attachments/assets/2b05fb4e-dd44-4602-9b81-c4e064836d36">
 </kbd>
-<br>
+<br><br>
+
     Random Forest Model:
     R²: 0.469
     RMSE: 1887.285
@@ -1041,7 +1044,8 @@ df_results = pd.DataFrame(results)
 <kbd>
 <img src="https://github.com/user-attachments/assets/8f3c6e4c-5fc2-4560-b4ee-143b871ccffe">
 </kbd>
-<br>
+<br><br>
+
     K-Neighbors Regressor Model:
     R²: 0.445
     RMSE: 1930.370
@@ -1050,7 +1054,8 @@ df_results = pd.DataFrame(results)
 <kbd>
 <img src="https://github.com/user-attachments/assets/e553794a-6f44-4305-b6f3-1540cd1a7353">
 </kbd>
-<br>
+<br><br>
+
     Gradient Boosting Model:
     R²: 0.504
     RMSE: 1823.641

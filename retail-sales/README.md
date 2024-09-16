@@ -1,4 +1,4 @@
-# Sale Retails Analysis
+# Retail Sales Analysis
 
 ## Project Overview
 This project analyses the retail sales using two different approaches:  

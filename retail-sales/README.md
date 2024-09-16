@@ -12,9 +12,11 @@
   - [Summary](#summary)
 * [Approach 2: Python](#approach-2-python)
   - [Data Cleaning and Initial Data Exploration](#data-cleaning-and-initial-data-exploration)
-  - [Data Exploration / EDA](#data-exploration--eda)
+  - [Data Exploration / EDA](#data-exploration--eda-1)
   - [Data Modeling](#data-modeling)
   - [Summary](#summary-1)
+ 
+---
 
 ## Project Overview
 This project analyses the retail sales in two different approaches:  
@@ -41,7 +43,7 @@ The dataset is obtained from `Kaggle` [Retail Sales Data with Seasonal Trends & 
 ## Approach 1: MySQL + Tableau
 
 ### Data Cleaning
-**1. Verify duplicated lines**
+##### 1. Verify duplicated lines
 ```mysql 
 WITH cte_duplicates AS (
     SELECT
@@ -58,7 +60,7 @@ WHERE row_num > 1;
 ```
 > * There is no duplicated data. 
 
-**2. Standardize the data**
+##### 2. Standardize the data
 ```mysql
 SELECT * FROM retail_sales_staging;
 
@@ -99,7 +101,7 @@ SELECT * FROM retail_sales_staging;
 ```
 > * The data doesn't have stadardization issue, except the data type of `Date` is modified to `DATE` format.
 
-**3. Verify null data**  
+##### 3. Verify null data  
 ```mysql
 SELECT * 
 FROM retail_sales_staging
@@ -117,11 +119,13 @@ WHERE
 ```
 > * Null data doesn't exist.
 
+##### Data cleaning summary
+
 ### Data Exploration / EDA
 The data exploration focuses on analysing effectiveness of marketing spend and discount strategy.
 
 #### Effectiveness of marketing spend
-**1. Marketing spend impact on sales revenue**
+##### 1. Marketing spend impact on sales revenue
 ```mysql
 WITH cte_revenue AS (
     SELECT
@@ -140,7 +144,7 @@ FROM cte_revenue;
 ```
 <img width="622" alt="image" src="https://github.com/user-attachments/assets/6268d58f-e6f8-498f-a17a-8d594da2e15f">
 
-**2. Marketing spend impact on sales revenue by product category**
+##### 2. Marketing spend impact on sales revenue by product category
 ```mysql
 WITH cte_revenue AS (
     SELECT
@@ -163,7 +167,7 @@ ORDER BY romi DESC;
 ```
 <img width="762" alt="image" src="https://github.com/user-attachments/assets/cda9fdc6-f405-4e95-b14b-f601d05c504d">
 
-**3. Marketing spend impact on sales revenue by day of the week**
+##### 3. Marketing spend impact on sales revenue by day of the week
 ```mysql
 WITH cte_revenue AS (
     SELECT
@@ -186,7 +190,7 @@ ORDER BY romi DESC;
 ```
 <img width="751" alt="image" src="https://github.com/user-attachments/assets/428af406-f740-4f05-9447-15518c687fd6">
 
-**4. Marketing spend impact on sales revenue by holiday effect**
+##### 4. Marketing spend impact on sales revenue by holiday effect
 ```mysql
 WITH cte_revenue AS (
     SELECT
@@ -209,7 +213,7 @@ ORDER BY romi DESC;
 ```
 <img width="735" alt="image" src="https://github.com/user-attachments/assets/88f34c51-dc4a-4e46-bcfc-196d87198a84">
 
-**5. Marketing spend impact on sales revenue by year**
+##### 5. Marketing spend impact on sales revenue by year
 ```mysql
 WITH cte_revenue AS (
     SELECT
@@ -233,7 +237,7 @@ ORDER BY romi DESC;
 <img width="669" alt="image" src="https://github.com/user-attachments/assets/3e30a4c0-b0a0-4e6e-a752-516e96998c91">
 
 #### Effectiveness of discount strategy
-**1. Discount impact on sales revenue**
+##### 1. Discount impact on sales revenue
 ```mysql
 SELECT
     ROUND(AVG(CASE WHEN `Discount Percentage` > 0 THEN `Sales Revenue (USD)` ELSE 0 END), 2) AS avg_revenue_with_discount,
@@ -244,7 +248,7 @@ FROM
 
 <img width="451" alt="image" src="https://github.com/user-attachments/assets/15c4e215-8d74-4992-be27-6f452a4923d9">
 
-**2. Discount impact on sales revenue by product category**
+##### 2. Discount impact on sales revenue by product category
 ```mysql
 SELECT
     `Product Category`,
@@ -257,7 +261,7 @@ ORDER BY avg_revenue_with_discount DESC;
 ```
 <img width="591" alt="image" src="https://github.com/user-attachments/assets/1a807be4-b2ff-4475-8784-5eafc692d860">
 
-**3. Discount impact on sales revenue by day of the week**
+##### 3. Discount impact on sales revenue by day of the week
 ```mysql
 SELECT
     `Day of the Week`,
@@ -270,7 +274,7 @@ ORDER BY avg_revenue_with_discount DESC;
 ```
 <img width="580" alt="image" src="https://github.com/user-attachments/assets/b0f169bb-6e3a-4b55-9d33-c458f07e431a">
 
-**4. Discount impact on sales revenue by holiday effect**
+##### 4. Discount impact on sales revenue by holiday effect
 ```mysql
 SELECT
     `Holiday Effect`,
@@ -284,7 +288,7 @@ ORDER BY avg_revenue_with_discount DESC;
 <img width="564" alt="image" src="https://github.com/user-attachments/assets/e1928d12-adba-4f61-b61e-8cc2c6470314">
 
 #### Sales revenue trend
-**1. Sales revenue trend over years**
+##### 1. Sales revenue trend over years
 ```mysql
 SELECT
     YEAR(`Date`) AS `year`,
@@ -302,7 +306,7 @@ FROM retail_sales_staging;
 <img width="163" alt="image" src="https://github.com/user-attachments/assets/b7f800dd-6054-498e-9474-3537a2304ff4">
 <img width="190" alt="image" src="https://github.com/user-attachments/assets/92721a25-b1ce-4424-a5fe-5dad368c05ba">
 
-**2. Seasonal sales revenue trend**
+##### 2. Seasonal sales revenue trend
 ```mysql
 SELECT
     `Holiday Effect`,
@@ -313,7 +317,7 @@ ORDER BY average_revenue DESC;
 ```
 <img width="253" alt="image" src="https://github.com/user-attachments/assets/7c359dcb-1977-42ea-acc5-f55b94b60807">
 
-**3. Sales revenue trend by day of the week**
+##### 3. Sales revenue trend by day of the week
 ```mysql
 SELECT
     `Day of the Week`,
@@ -325,7 +329,7 @@ ORDER BY average_revenue DESC;
 <img width="270" alt="image" src="https://github.com/user-attachments/assets/a22294d7-f56e-4323-ab93-6a69ab12ce24">
 
 
-**4. Sales revenue trend by product category**
+##### 4. Sales revenue trend by product category
 ```mysql
 SELECT
 	`Product Category`,
@@ -336,7 +340,7 @@ ORDER BY total_revenue DESC;
 ```
 <img width="256" alt="image" src="https://github.com/user-attachments/assets/e4c886eb-2e3e-4cbe-bf96-6500b22d34cf">
    
-**5. Sales revenue trend by store location**
+##### 5. Sales revenue trend by store location
 ```mysql
 SELECT 
 	`Store Location`,
@@ -348,6 +352,9 @@ LIMIT 5;
 ```
 <img width="235" alt="image" src="https://github.com/user-attachments/assets/c31faad1-547a-4015-921a-3af3fc45615e">
 
+##### Data exploration summary
+
+
 ### Data Visualization
 The data is visualized in an interactive Tableau dashboard, which you can explore [here](https://public.tableau.com/app/profile/lily.tiong/viz/retail_sales_17264041202470/SalesDashboard?publish=yes).   
 <kbd>
@@ -358,7 +365,9 @@ The data is visualized in an interactive Tableau dashboard, which you can explor
 <img src="https://github.com/user-attachments/assets/8720141f-3b18-4579-938a-ed79cfdd7c2c">
 </kbd> 
 
-### Summary
+##### Data visualization summary
+
+
 
 ## Approach 2: Python
 
@@ -658,7 +667,7 @@ df['Product Category'].nunique()
 ```
     4
     
-**Summary:**
+##### Data cleaning summary
 1. No null value or duplicated value is found in the dataset.
 2. `Date` column data type is updated to `datetime64`.
 3. There are 30,000 rows and 11 columns in the dataset.
@@ -695,9 +704,9 @@ categorical_col = ['Product Category', 'Discount Percentage', 'Day of the Week',
 plt.style.use('ggplot')
 ```
 
-### 3.1. Univariate Analysis
+#### Univariate Analysis
 
-#### 3.1.1. Distribution of Numerical Variables
+##### Distribution of Numerical Variables
 ```python
 for col in numerical_col:
     plt.figure(figsize=(10, 5))
@@ -720,13 +729,9 @@ for col in numerical_col:
 <img src="https://github.com/user-attachments/assets/6d0946b0-8f68-4dcf-bf98-f9916c221dd3">
 </kbd>
 
-#### 3.1.2. Count plot of categorical variables
+#### Bivariate Analysis
 
-Skip this part because there is no valuable information from categorical variables count.
-
-### 3.2. Bivariate Analysis
-
-#### 3.2.1. Box plots of numerical variables vs. categorical variables
+##### Box plots of numerical variables vs. categorical variables
 ```python
 for col_c in categorical_col:
     for col_n in numerical_col:
@@ -791,8 +796,8 @@ for col_c in categorical_col:
 <img src="https://github.com/user-attachments/assets/85cf152b-c018-41fb-b352-c11e25446098">
 </kbd>
 
-### 3.3. Multivariate Analysis
-#### 3.3.1. Pairplot of numerical variales
+#### Multivariate Analysis
+##### Pairplot of numerical variales
 ```python
 plt.figure(figsize=(10,5))
 sns.pairplot(df[numerical_col])
@@ -803,7 +808,7 @@ plt.show()
 <img src="https://github.com/user-attachments/assets/4a51af65-f1c3-46ea-9672-7e44bc4e3f1f">
 </kbd>
 
-#### 3.3.2. Heatmap of numerical variables
+##### Heatmap of numerical variables
 ```python
 # corr = df.select_dtypes(include=[np.number])
 corr = df[numerical_col].corr()
@@ -819,7 +824,7 @@ plt.show()
 <img src="https://github.com/user-attachments/assets/20df6623-7619-45df-aa41-2a3d485f3f52">
 </kbd>
 
-### 3.4. Time Series Analysis
+#### Time Series Analysis
 ```python
 # Analysis by hour
 for col in numerical_col:
@@ -850,7 +855,7 @@ for col in numerical_col:
 <img src="https://github.com/user-attachments/assets/b591d886-1a0f-4251-ba46-589655448d01">
 </kbd>
 
-**EDA Observation:**
+##### Data exploration summary
 1. The distributions of `Units Sold`, `Sales Revenue (USD)`, and `Marketing Spend (USD)` are right-skewed. 
 2. Among the product categories, `Electronics` leads with the highest units sold and sales revenue, followed by `Clothing`, `Furniture`, and `Groceries`. 
 3. In terms of marketing spend, `Electronics` also tops the list, followed by `Groceries`, then `Clothing`, and `Furniture`.
@@ -860,8 +865,8 @@ for col in numerical_col:
 7. From the correlation analysis, only `Sales Revenue (USD)` and `Units Sold` show a notable linear relationship. `Marketing Spend (USD)` does not show a strong correlation with either `Sales Revenue (USD)` or `Units Sold`, suggesting that marketing spend has a limited impact on revenue. This is further supported by the heatmap, where `Marketing Spend (USD)` shows a near-zero correlation with both sales revenue and units sold.
 8. The time series analysis reveals that `Sales Revenue (USD)` reaches its lowest point in February, followed by a consistent rise, peaking in December, likely due to year-end seasonal events. Meanwhile, `Marketing Spend (USD)` also dips in February but remains relatively stable, fluctuating around $62,000 throughout the year.
 
-## 4. Data Modeling
-### 4.1. Data Preprocessing
+### Data Modeling
+#### Data Preprocessing
 ```python
 # Define Libraries
 
@@ -1048,7 +1053,11 @@ plt.show()
 <img src="https://github.com/user-attachments/assets/1cab472b-0dfa-48ce-a6ef-7c1b9827ec30">
 </kbd>
 
-**Data modeling results summary:**  
+##### Data modeling results summary 
 The regression models (Linear Regression, Lasso Regression, and Ridge Regression) performed the best among the models tested, each achieving an identical R² score of 0.542.   
 However, the Lasso Regression model slightly outperformed the others, with an RMSE of 1752.215 and an MAE of 1141.092.   
 Despite these results, the overall model performance is suboptimal, aligning with the findings from the EDA, which revealed weak correlations between the features and the target variable.
+
+## Conclusion
+
+## Future Works

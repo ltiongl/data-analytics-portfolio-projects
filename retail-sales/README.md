@@ -25,8 +25,8 @@ The dataset is obtained from `Kaggle`: [Retail Sales Data with Seasonal Trends &
 ---
 
 ## Table of Contents
-* [Analyzing Data using MySQL + Tableau](#approach-1-analyzing-data-using-mysql--tableau)
-  - [Data Cleaning](data-cleaning)
+* [Approach 1: Analyzing Data using MySQL + Tableau](#approach-1-analyzing-data-using-mysql--tableau)
+  - [Data Cleaning](#data-cleaning)
   - [Data Exploration / EDA](#data-exploration--eda)
   - [Data Visualization](#data-visualization)
   - [Summary of Findings from MySQL and Tableau](#summary-of-findings-from-mysql-and-tableau-analysis)

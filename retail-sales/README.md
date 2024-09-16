@@ -140,8 +140,6 @@ WITH cte_revenue AS (
         retail_sales_staging
 )
 SELECT
-    avg_revenue_with_marketing_spend,
-    avg_revenue_without_marketing_spend,
     ROUND(((avg_revenue_with_marketing_spend - avg_revenue_without_marketing_spend) - avg_marketing_spend) 
     / avg_marketing_spend, 2) AS romi
 FROM cte_revenue;
@@ -162,8 +160,6 @@ WITH cte_revenue AS (
 )
 SELECT
     `Product Category`,
-    avg_revenue_with_marketing_spend,
-    avg_revenue_without_marketing_spend,
     ROUND(((avg_revenue_with_marketing_spend - avg_revenue_without_marketing_spend) - avg_marketing_spend) 
     / avg_marketing_spend, 2) AS romi
 FROM cte_revenue
@@ -185,8 +181,6 @@ WITH cte_revenue AS (
 )
 SELECT
     `Day of the Week`,
-	  avg_revenue_with_marketing_spend,
-    avg_revenue_without_marketing_spend,
     ROUND(((avg_revenue_with_marketing_spend - avg_revenue_without_marketing_spend) - avg_marketing_spend) 
     / avg_marketing_spend, 2) AS romi
 FROM cte_revenue
@@ -208,8 +202,6 @@ WITH cte_revenue AS (
 )
 SELECT
     `Holiday Effect`,
-	  avg_revenue_with_marketing_spend,
-    avg_revenue_without_marketing_spend,
     ROUND(((avg_revenue_with_marketing_spend - avg_revenue_without_marketing_spend) - avg_marketing_spend) 
     / avg_marketing_spend, 2) AS romi
 FROM cte_revenue
@@ -231,8 +223,6 @@ WITH cte_revenue AS (
 )
 SELECT
     `year`,
-    avg_revenue_with_marketing_spend,
-    avg_revenue_without_marketing_spend,
     ROUND(((avg_revenue_with_marketing_spend - avg_revenue_without_marketing_spend) - avg_marketing_spend) 
     / avg_marketing_spend, 2) AS romi
 FROM cte_revenue

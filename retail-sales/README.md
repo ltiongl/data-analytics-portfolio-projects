@@ -1,44 +1,41 @@
 # Sale Retails Analysis
 
-## Table of Contents
-* [Project Overview](#project-overview)
-* [Key Objectives](#key-objectives)
-* [Software and Tools](#software-and-tools)
-* [Data Source](#data-source)
-* [Approach 1: MySQL + Tableau](#approach-1mysql-tableau)
-  - [Data Cleaning](data-cleaning)
-  - [Data Exploration / EDA](#data-exploration--eda)
-  - [Data Visualization](#data-visualization)
-  - [Summary](#summary)
-* [Approach 2: Python](#approach-2-python)
-  - [Data Cleaning and Initial Data Exploration](#data-cleaning-and-initial-data-exploration)
-  - [Data Exploration / EDA](#data-exploration--eda-1)
-  - [Data Modeling](#data-modeling)
-  - [Summary](#summary-1)
- 
----
-
 ## Project Overview
-This project analyses the retail sales in two different approaches:  
+This project analyses the retail sales using two different approaches:  
 1. Data exploration using `MySQL` and data visualization using `Tableau Dashboard`   
 2. Data exploration and model building using `Python`  
 
-These approches examines the retail sales data from different perspectives providing a more comprehensive understanding of the analysis.
+These approches explore the retail sales data from different perspectives, providing a more comprehensive understanding of the analysis.
 
 ## Key Objectives
-* **Marketing analysis**: evaluate the impact of marketing spend and discount strategies on sales.
+* **Marketing analysis**: evaluate the impact of marketing spend and discount strategy on sales.
 * **Seasonal trend analysis**: examine how holiday and days in a week impact sales.
 * **Predictive modeling**: build and evaluate models to forecast future sales based on historical data.
-* **Visualization dashboard**: create visualization dashboard to summarized the analysis findings.
+* **Visualization dashboard**: create visualization dashboard to summarize the analysis findings.
 
 ## Software and Tools
 Python version: `Python 3.9.10`  
 Python packages: `pandas`, `matplotlib`, `seaborn`, `sklearn`   
 Tableau: `Tableau Desktop Public Edition 2024.2.0`    
-MySQL Workbench: 'MySQL Workbench Version 8.0.38`  
+MySQL Workbench: `MySQL Workbench Version 8.0.38`  
 
 ## Data Source
-The dataset is obtained from `Kaggle` [Retail Sales Data with Seasonal Trends & Marketing](https://www.kaggle.com/datasets/abdullah0a/retail-sales-data-with-seasonal-trends-and-marketing).  
+The dataset is obtained from `Kaggle`: [Retail Sales Data with Seasonal Trends & Marketing](https://www.kaggle.com/datasets/abdullah0a/retail-sales-data-with-seasonal-trends-and-marketing).  
+
+---
+
+## Table of Contents
+* [Approach 1: MySQL + Tableau](#approach-1-mysql--tableau)
+  - [Data Cleaning](data-cleaning)
+  - [Data Exploration / EDA](#data-exploration--eda)
+  - [Data Visualization](#data-visualization)
+* [Approach 2: Python](#approach-2-python)
+  - [Data Cleaning and Initial Data Exploration](#data-cleaning-and-initial-data-exploration)
+  - [Data Exploration / EDA](#data-exploration--eda-1)
+  - [Data Modeling](#data-modeling)
+* [Conclusion](#conclusion)
+    
+---
 
 ## Approach 1: MySQL + Tableau
 

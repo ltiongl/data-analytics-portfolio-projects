@@ -1,13 +1,17 @@
 # Sale Retails Analysis
 
 ## Table of Contents
+* [Project Overview](#project-overview)
+* [Key Objectives](#key-objectives)
+* [Software and Tools](#software-and-tools)
+* [Data Source](#data-source)
 * [Approach 1: MySQL + Tableau](#approach-1mysql-tableau)
   - [Data Cleaning](data-cleaning)
   - [Data Exploration / EDA](#data-exploration--eda)
   - [Data Visualization](#data-visualization)
   - [Summary](#summary)
 * [Approach 2: Python](#approach-2-python)
-  - [Data Cleaning](#data-cleaning-1)
+  - [Data Cleaning and Initial Data Exploration](#data-cleaning-and-initial-data-exploration)
   - [Data Exploration / EDA](#data-exploration--eda)
   - [Data Modeling](#data-modeling)
   - [Summary](#summary-1)
@@ -27,9 +31,9 @@ These approches examines the retail sales data from different perspectives provi
 
 ## Software and Tools
 Python version: `Python 3.9.10`  
-Python packages: `pandas`, `matplotlib`, `seaborn`, `sklearn`
-Tableau: `Tableau Desktop Public Edition 2024.2.0` 
-MySQL Workbench: 'MySQL Workbench Version 8.0.38`
+Python packages: `pandas`, `matplotlib`, `seaborn`, `sklearn`   
+Tableau: `Tableau Desktop Public Edition 2024.2.0`    
+MySQL Workbench: 'MySQL Workbench Version 8.0.38`  
 
 ## Data Source
 The dataset is obtained from `Kaggle` [Retail Sales Data with Seasonal Trends & Marketing](https://www.kaggle.com/datasets/abdullah0a/retail-sales-data-with-seasonal-trends-and-marketing).  
@@ -663,6 +667,7 @@ df['Product Category'].nunique()
 ```python
 # Drop column 'Store ID'
 df = df.drop('Store ID', axis=1)
+```
 
 ### Data Exploration / EDA
 

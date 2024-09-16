@@ -316,7 +316,7 @@ FROM retail_sales_staging;
 ```mysql
 SELECT
     `Holiday Effect`,
-	  ROUND(AVG(`Sales Revenue (USD)`), 2) AS average_revenue
+    ROUND(AVG(`Sales Revenue (USD)`), 2) AS average_revenue
 FROM retail_sales_staging
 GROUP BY `Holiday Effect`
 ORDER BY average_revenue DESC;
@@ -327,7 +327,7 @@ ORDER BY average_revenue DESC;
 ```mysql
 SELECT
     `Day of the Week`,
-	  ROUND(AVG(`Sales Revenue (USD)`), 2) AS average_revenue
+    ROUND(AVG(`Sales Revenue (USD)`), 2) AS average_revenue
 FROM retail_sales_staging
 GROUP BY `Day of the Week`
 ORDER BY average_revenue DESC;
@@ -338,8 +338,8 @@ ORDER BY average_revenue DESC;
 #### 3.4. Sales revenue trend by product category
 ```mysql
 SELECT
-	`Product Category`,
-	ROUND(SUM(`Sales Revenue (USD)`), 2) AS total_revenue
+    `Product Category`,
+    ROUND(SUM(`Sales Revenue (USD)`), 2) AS total_revenue
 FROM retail_sales_staging
 GROUP BY `Product Category`
 ORDER BY total_revenue DESC;
@@ -349,8 +349,8 @@ ORDER BY total_revenue DESC;
 #### 3.5. Sales revenue trend by store location
 ```mysql
 SELECT 
-	`Store Location`,
-	ROUND(SUM(`Sales Revenue (USD)`), 2) AS total_revenue
+    `Store Location`,
+    ROUND(SUM(`Sales Revenue (USD)`), 2) AS total_revenue
 FROM retail_sales_staging
 GROUP BY `Store Location`
 ORDER BY total_revenue DESC
@@ -362,7 +362,7 @@ LIMIT 5;
 * Sales revenue for 2022 and 2023 remained relatively consistent, indicating stable performance across both years.
 * Sales revenue for 2024 is excluded from the analysis due to the limited data, which only includes the first day of the year.
 * The seasonal sales trend indicates that holidays generate nearly double the sales revenue compared to non-holiday periods.
-* Sales revenue is highest on Sundays and Saturdays, outperforming weekdays.
+* Sales revenue is the highest on Sundays and Saturdays, outperforming weekdays.
 * Electronics and furniture are the top contributors to sales revenue, followed by clothing and groceries.
 * The stores in Congo, Korea, and Anguilla lead in sales revenue generation.
 
@@ -371,13 +371,13 @@ LIMIT 5;
 * Conversely, the implementation of a discount strategy consistently results in lower average sales revenue compared to periods without discounts, suggesting that discount strategies do not positively influence sales revenue.
 
 ### Data Visualization
-The data is visualized in an interactive Tableau dashboard, which you can explore [here](https://public.tableau.com/app/profile/lily.tiong/viz/retail_sales_17264041202470/SalesDashboard?publish=yes).     
-
-The dashboard presents Key Performance Indicators (KPIs) for `Total Sales Revenue` and `Total Marketing Spend`, with a performance comparison between 2022 and 2023. Given the available data is limited to these two years, the analysis focuses exclusively on these metrics.   
+The data is visualized in an interactive Tableau dashboard, which can be explored [here](https://public.tableau.com/app/profile/lily.tiong/viz/retail_sales_17264041202470/SalesDashboard?publish=yes).     
+  
+The dashboard presents Key Performance Indicators (KPIs) of `Total Sales Revenue` and `Total Marketing Spend`, with a performance comparison between 2022 and 2023.   
    
-The Total Sales Revenue KPI indicates a nearly flat growth rate, with sales revenue showing almost no increase between 2022 and 2023. In contrast, total marketing spend decreased by approximately 0.04% in 2023 compared to 2022.   
+The `Total Sales Revenue` KPI indicates a nearly flat growth rate, with sales revenue showing almost no increase between 2022 and 2023. In contrast, total marketing spend decreased by approximately 0.04% in 2023 compared to 2022.   
    
-The overall ROMI (Return on Marketing Investment) metric is negative for both years. In 2022, ROMI was positive for electronics, during holidays, and on Sundays and Tuesdays. Conversely, in 2023, ROMI was positive for clothing, and on Thursdays, Fridays, and Saturdays. There is no consistent trend in ROMI across the two years.  
+The overall ROMI (Return on Marketing Investment) metric is negative for both years. In 2022, ROMI was positive for electronics, during holidays, and on Sundays and Tuesdays. On the other hand, in 2023, ROMI was positive for clothing, and on Thursdays, Fridays, and Saturdays. There is no consistent trend in ROMI across the two years.  
    
 Regarding the impact of discount strategies, only the holiday period in 2023 showed a slight improvement in sales revenue, though the increase was not substantial.    
 
@@ -435,13 +435,15 @@ df.isnull().sum()
     Holiday Effect           0
     dtype: int64
 
+> There is no null data.
+
 #### 2. Verify duplicated lines
 ```python
 df.duplicated().sum()
 ```
     np.int64(0)
     
-> There is no null data and duplicated data.
+> There is no duplicated data.
 
 #### 3. Fix the data
 ```python
@@ -473,7 +475,7 @@ df.info()
 
 > `Date` data type has been updated to `datetime64`.
 
-#### 4. Initial data exploaration
+#### 4. Initial data exploration
 ```python
 # Initial Data Exploration
 df.head()
@@ -695,7 +697,7 @@ df['Product Category'].nunique()
 ```
     4
     
-##### 5. Data cleaning summary
+#### 5. Data cleaning summary
 *  No null value or duplicated value is found in the dataset.
 *  `Date` column data type is updated to `datetime64`.
 *  There are 30,000 rows and 11 columns in the dataset.
@@ -707,7 +709,7 @@ df = df.drop('Store ID', axis=1)
 ```
 
 ### Data Exploration / EDA
-The data is analyzed through univariate, bivariate, and multivariate approaches, covering both numerical and categorical variables.   
+The data is analyzed through univariate, bivariate, multivariate and time series approaches, covering both numerical and categorical variables.   
 
 #### 1. Prepration
 ```python
@@ -734,9 +736,9 @@ categorical_col = ['Product Category', 'Discount Percentage', 'Day of the Week',
 plt.style.use('ggplot')
 ```
 
-#### 2. Univariate Analysis
+#### 2. Univariate analysis
 
-#### 2.1. Distribution of Numerical Variables
+#### 2.1. Distribution of numerical variables
 ```python
 for col in numerical_col:
     plt.figure(figsize=(10, 5))
@@ -750,16 +752,16 @@ for col in numerical_col:
 <kbd>
 <img src="https://github.com/user-attachments/assets/7059c957-0387-46fb-83d4-9d1c35c0bfb8">
 </kbd> 
-
+<br> <br>  
 <kbd>
 <img src="https://github.com/user-attachments/assets/2c4a084e-9afc-4ac9-96ad-011905f3c2dc">
-</kbd> 
-
+</kbd>    
+<br><br>
 <kbd>
 <img src="https://github.com/user-attachments/assets/6d0946b0-8f68-4dcf-bf98-f9916c221dd3">
 </kbd>
-
-#### 3. Bivariate Analysis
+    
+#### 3. Bivariate analysis
 
 #### 3.1. Box plots of numerical variables vs. categorical variables
 ```python
@@ -781,52 +783,52 @@ for col_c in categorical_col:
 <kbd>
 <img src="https://github.com/user-attachments/assets/aaa76089-3a3b-4f8c-a11d-d4e51254b6fb">
 </kbd>
-
+<br><br>
 <kbd>
 <img src="https://github.com/user-attachments/assets/aedf6c8f-9034-4bea-ab52-39dd2a417ea8">
 </kbd>
-
+<br><br>
 <kbd>
 <img src="https://github.com/user-attachments/assets/12ce1b77-da0b-4176-a599-d2f2dd540819">
 </kbd>
-
+<br><br>
 <kbd>
 <img src="https://github.com/user-attachments/assets/90fa0a0f-c32e-42b4-96c6-a2e1d0e699e0">
 </kbd>
-
+<br><br>
 <kbd>
 <img src="https://github.com/user-attachments/assets/714e6763-6ac9-4e44-a6cf-02aa53de0891">
 </kbd>
-
+<br><br>
 <kbd>
 <img src="https://github.com/user-attachments/assets/170a44b4-a35e-421c-9343-5e12625029d2">
 </kbd>
-
+<br><br>
 <kbd>
 <img src="https://github.com/user-attachments/assets/414098f0-0b2a-456a-a8b0-ec85912152a6">
 </kbd>
-
+<br><br>
 <kbd>
 <img src="https://github.com/user-attachments/assets/4974c8ef-7eea-418e-8e46-7e4fe4d2531a">
 </kbd>
-
+<br><br>
 <kbd>
 <img src="https://github.com/user-attachments/assets/c628a116-17aa-4c48-a2b6-6b9629d36a61">
 </kbd>
-
+<br><br>
 <kbd>
 <img src="https://github.com/user-attachments/assets/2b44a1fe-f3d6-403e-bda6-0ee6a89b8c9f">
 </kbd>
-
+<br><br>
 <kbd>
 <img src="https://github.com/user-attachments/assets/35bf54fa-8afa-41f5-a05d-c0ffe9e94472">
 </kbd>
-
+<br><br>
 <kbd>
 <img src="https://github.com/user-attachments/assets/85cf152b-c018-41fb-b352-c11e25446098">
 </kbd>
 
-#### 4. Multivariate Analysis
+#### 4. Multivariate analysis
 #### 4.1. Pairplot of numerical variales
 ```python
 plt.figure(figsize=(10,5))
@@ -854,7 +856,7 @@ plt.show()
 <img src="https://github.com/user-attachments/assets/20df6623-7619-45df-aa41-2a3d485f3f52">
 </kbd>
 
-#### 5. Time Series Analysis
+#### 5. Time series analysis
 ```python
 # Analysis by month
 for col in numerical_col:
@@ -876,11 +878,11 @@ for col in numerical_col:
 <kbd>
 <img src="https://github.com/user-attachments/assets/e98def7a-e6e4-4f68-b321-9f401213c3ad">
 </kbd>
-
+<br><br>
 <kbd>
 <img src="https://github.com/user-attachments/assets/570b3880-5c1e-49a1-8926-2a93fedf3c92">
 </kbd>
-
+<br><br>
 <kbd>
 <img src="https://github.com/user-attachments/assets/b591d886-1a0f-4251-ba46-589655448d01">
 </kbd>
@@ -1076,11 +1078,11 @@ plt.show()
 <kbd>
 <img src="https://github.com/user-attachments/assets/caa95141-13d7-45fd-b68b-eefb57f1d672">
 </kbd>
-
+<br><br>
 <kbd>
 <img src="https://github.com/user-attachments/assets/69f90117-a34c-4cc7-b133-65ae214dd219">
 </kbd>
-
+<br><br>
 <kbd>
 <img src="https://github.com/user-attachments/assets/1cab472b-0dfa-48ce-a6ef-7c1b9827ec30">
 </kbd>

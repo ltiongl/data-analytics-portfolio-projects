@@ -18,7 +18,7 @@ WITH cte_duplicates AS (
     SELECT
         *,
         ROW_NUMBER() OVER(PARTITION BY `Store ID`, `Product ID`, `Date`, `Units Sold`, `Sales Revenue (USD)`,
-								       `Discount Percentage`, `Marketing Spend (USD)`, `Store Location`, 
+                                       `Discount Percentage`, `Marketing Spend (USD)`, `Store Location`, 
                                        `Product Category`, `Day of the Week`,`Holiday Effect`) AS row_num
     FROM retail_sales_staging
 )
@@ -222,8 +222,8 @@ ORDER BY avg_revenue_with_discount DESC;
 -- 2.3.1. Sales trend over year
 
 SELECT
-	YEAR(`Date`) AS `year`,
-	ROUND(SUM(`Sales Revenue (USD)`), 2) AS total_revenue
+    YEAR(`Date`) AS `year`,
+    ROUND(SUM(`Sales Revenue (USD)`), 2) AS total_revenue
 FROM retail_sales_staging
 GROUP BY `year`
 ORDER By `year`;
@@ -231,14 +231,14 @@ ORDER By `year`;
 -- Check date range
 SELECT
     MIN(`Date`) AS first_date,
-	MAX(`Date`) AS last_date
+    MAX(`Date`) AS last_date
 FROM retail_sales_staging;
 
 -- 2.3.2. Seasonal sales trend 
 
 SELECT
     `Holiday Effect`,
-	ROUND(AVG(`Sales Revenue (USD)`), 2) AS average_revenue
+    ROUND(AVG(`Sales Revenue (USD)`), 2) AS average_revenue
 FROM retail_sales_staging
 GROUP BY `Holiday Effect`
 ORDER BY average_revenue DESC;
@@ -247,7 +247,7 @@ ORDER BY average_revenue DESC;
 
 SELECT
     `Day of the Week`,
-	ROUND(AVG(`Sales Revenue (USD)`), 2) AS average_revenue
+    ROUND(AVG(`Sales Revenue (USD)`), 2) AS average_revenue
 FROM retail_sales_staging
 GROUP BY `Day of the Week`
 ORDER BY average_revenue DESC;
@@ -255,8 +255,8 @@ ORDER BY average_revenue DESC;
 -- 2.3.4. Sales trend by `Product Category`
 
 SELECT 
-	`Product Category`,
-	ROUND(SUM(`Sales Revenue (USD)`), 2) AS total_revenue
+    `Product Category`,
+    ROUND(SUM(`Sales Revenue (USD)`), 2) AS total_revenue
 FROM retail_sales_staging
 GROUP BY `Product Category`
 ORDER BY total_revenue DESC;
@@ -264,8 +264,8 @@ ORDER BY total_revenue DESC;
 -- 2.3.5. Sales trend by `Store Location`
 
 SELECT 
-	`Store Location`,
-	ROUND(SUM(`Sales Revenue (USD)`), 2) AS total_revenue
+    `Store Location`,
+    ROUND(SUM(`Sales Revenue (USD)`), 2) AS total_revenue
 FROM retail_sales_staging
 GROUP BY `Store Location`
 ORDER BY total_revenue DESC

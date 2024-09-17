@@ -78,11 +78,11 @@ Impact of marketing spend is evaluated using ROMI metric.
 Based on the insights and findings, the following recommendations are proposed:
 * The analysis suggests that neither marketing spend nor discount strategies are effectively driving sales revenue. Potential causes may include inefficiencies in marketing allocation or promotional execution. **Further investigation is required to identify root causes and optimize future sales strategies.**
 * Sales revenue consistently increases during holidays and weekends. **This trend presents an opportunity to focus efforts on these periods to maximize revenue growth.**
-* Although the Lasso Regression model offers a baseline for predicting future sales revenue, its performance is currently limited. **Further research and model refinement are recommended to develop a more accurate and reliable forecasting solution.**
+* Although the `Lasso Regression` model offers a baseline for predicting future sales revenue, its performance is currently limited. **Further research and model refinement are recommended to develop a more accurate and reliable forecasting solution.**
 * The analysis is based on a limited dataset spanning only two years. **Expanding the dataset will lead to more robust and reliable conclusions, allowing for better-informed decision-making.**
 
 ## Assumptions and Caveats
 Throughout the analysis, multiple assumptions were made to manage challenges with the data. These assumptions and caveats are noted below:
 * Data for the year `2024` is excluded from the analysis because it only comprises information from a single day, `2024-01-01`. This limited dataset does not provide a representative sample of the year's trends and patterns, making it insufficient for meaningful analysis.
 * ROMI was calculated using the following formula: ROMI = ((average_sales_with_marketing_spend - average_revenue_without_marketing_spend) - (average_marketing_spend)) / average_marketing_spend.
- - The term (average_sales_with_marketing_spend - average_revenue_without_marketing_spend) represents the additional sales revenue generated through marketing efforts.
+  - The term (average_sales_with_marketing_spend - average_revenue_without_marketing_spend) represents the additional sales revenue generated through marketing efforts.

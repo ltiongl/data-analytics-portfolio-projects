@@ -384,7 +384,7 @@ Regarding the impact of discount strategies, only the holiday period in 2023 sho
 <kbd>
 <img src="https://github.com/user-attachments/assets/5b5f9313-9980-4504-8b9a-63a03073989b">
 </kbd> 
-    
+<br><br>    
 <kbd>
 <img src="https://github.com/user-attachments/assets/8720141f-3b18-4579-938a-ed79cfdd7c2c">
 </kbd> 

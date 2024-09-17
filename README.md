@@ -1,11 +1,11 @@
 # Data Analytics Portfolio Projects
 
 ## Index
-* [Project 1: Retail Sales Analysis](#project-1-retail-sales-analysis)
+* [Project 1: Retail Sales Data Analysis](#project-1-retail-sales-data-analysis)
 
 ---
 
-## Project 1: [Retail Sales Analysis](https://github.com/ltiongl/data-analytics-portfolio-projects/tree/main/retail-sales)
+## Project 1: [Retail Sales Data Analysis](https://github.com/ltiongl/data-analytics-portfolio-projects/tree/main/retail-sales)
 
 This project analyses the retail sales data from `2022-01-01` to `2024-01-01`, focusing on four key areas:
 * `Marketing analysis`: evaluating the effectiveness of marketing spend and discount strategies on sales performance.

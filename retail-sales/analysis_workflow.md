@@ -1,7 +1,7 @@
 # Retail Sales Analysis
 
 ## Project Overview
-This project analyses the retail sales using two different approaches:  
+This project analyses the retail sales data using two different approaches:  
 1. Data exploration using `MySQL` and data visualization using `Tableau Dashboard`   
 2. Data exploration and model building using `Python`  
 

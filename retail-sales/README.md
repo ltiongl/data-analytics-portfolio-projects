@@ -26,7 +26,7 @@ A detailed explanation of the data analysis workflow is available [here](https:/
 Spearsland Store's database structure consists of `retail_sales_staging` table with a total row count of 30,000 records.  
 `retail_sales_staging` table is the updated version from the original table `retail_sales`, with the data type of `Date` updated to `DATE` format.
 
-<img width="250" alt="image" src="https://github.com/user-attachments/assets/857914e7-1f2a-4eda-99f8-56e4f082a6e2">   
+<img width="200" alt="image" src="https://github.com/user-attachments/assets/857914e7-1f2a-4eda-99f8-56e4f082a6e2">   
    
 Prior to beginning the analysis, a variety of checks were conducted for quality control and familiarization with the dataset.  
 The SQL queries utilized to inspect and perform quality check are available [here](https://github.com/ltiongl/data-analytics-portfolio-projects/blob/main/retail-sales/analysis_workflow.md#data-cleaning), while the python code for data cleaning can be found [here](https://github.com/ltiongl/data-analytics-portfolio-projects/blob/main/retail-sales/analysis_workflow.md#data-cleaning-and-initial-data-exploration).
@@ -51,7 +51,7 @@ Impact of marketing spend is evaluated using ROMI metric.
 * The heatmap below further highlights the lack of correlation between marketing spend and sales revenue, demonstrating zero correlation between these variables.d and sales revenue is further proved by the heatmap below, where there is 0 correlation between marketing spend and sales revenue.
 
 <kbd>
-<img src="https://github.com/user-attachments/assets/20df6623-7619-45df-aa41-2a3d485f3f52">
+<img width="500" src="https://github.com/user-attachments/assets/20df6623-7619-45df-aa41-2a3d485f3f52">
 </kbd>
 
 ### Effectiveness of Discount Strategy 
@@ -63,7 +63,7 @@ Impact of marketing spend is evaluated using ROMI metric.
 * Time series analysis shows the highest sales spikes occurred in December 2022 and 2023, coinciding with the holiday season.
 
 <kbd>
-<img src="https://github.com/user-attachments/assets/570b3880-5c1e-49a1-8926-2a93fedf3c92">
+<img width="500" src="https://github.com/user-attachments/assets/570b3880-5c1e-49a1-8926-2a93fedf3c92">
 </kbd>
 
 ### Sales Forecasting
@@ -71,7 +71,7 @@ Impact of marketing spend is evaluated using ROMI metric.
 * However, the model's R² score was 0.542, indicating there is room for improvement in predictive accuracy.
   
 <kbd>
-<img src="https://github.com/user-attachments/assets/5e74e54c-0b97-4472-a861-790e68ce4bb3">
+<img width="500" src="https://github.com/user-attachments/assets/5e74e54c-0b97-4472-a861-790e68ce4bb3">
 </kbd>
 
 ## Recommendations

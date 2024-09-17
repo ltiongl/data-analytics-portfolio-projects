@@ -1102,7 +1102,7 @@ Despite these results, the overall model performance is suboptimal, aligning wit
 * The discount strategy has minimal impact on sales revenue, and marketing spend shows a weak correlation with sales revenue. Neither the discount strategy nor marketing spend is effective in significantly boosting sales revenue.
 * Sales revenue consistently peaks in December and reaches its lowest point in February each year.
 * Weekends generate higher sales revenue compared to weekdays.
-* Although the `Lasso Regression` model outperformed other models in predicting sales revenue, it achieved an R² score of 0.542, which indicates limited effectiveness in modeling.
+* Although the `Lasso Regression` model outperformed other models in predicting sales revenue, it achieved an `R²` score of 0.542, which indicates limited effectiveness in modeling.
 
 ## Conclusion
 * Marketing analysis

@@ -19,7 +19,7 @@ WITH cte_duplicates AS (
         *,
         ROW_NUMBER() OVER(PARTITION BY `Store ID`, `Product ID`, `Date`, `Units Sold`, `Sales Revenue (USD)`,
                                        `Discount Percentage`, `Marketing Spend (USD)`, `Store Location`, 
-                                       `Product Category`, `Day of the Week`,`Holiday Effect`) AS row_num
+                                       `Product Category`, `Day of the Week`, `Holiday Effect`) AS row_num
     FROM retail_sales_staging
 )
 SELECT

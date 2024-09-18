@@ -23,7 +23,7 @@ WITH cte_duplicates AS (
     FROM retail_sales_staging
 )
 SELECT
-	* 
+    * 
 FROM cte_duplicates
 WHERE row_num > 1;
 

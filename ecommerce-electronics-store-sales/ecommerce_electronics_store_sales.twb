@@ -19,7 +19,7 @@
     <WorksheetBackgroundTransparency />
     <ZoneBackgroundTransparency />
   </document-format-change-manifest>
-  <repository-location id='ecommerce_electronics_store_sales' path='/workbooks' revision='1.3' />
+  <repository-location id='ecommerce_electronics_store_sales' path='/workbooks' revision='1.5' />
   <preferences>
     <preference name='ui.encoding.shelf.height' value='24' />
     <preference name='ui.shelf.height' value='26' />
@@ -1456,8 +1456,8 @@
         <devicelayout auto-generated='true' name='Phone'>
           <size maxheight='1800' minheight='1800' sizing-mode='vscroll' />
           <zones>
-            <zone h='100000' id='55' type-v2='layout-basic' w='100000' x='0' y='0'>
-              <zone h='98000' id='54' param='vert' type-v2='layout-flow' w='98750' x='625' y='1000'>
+            <zone h='100000' id='61' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98000' id='60' param='vert' type-v2='layout-flow' w='98750' x='625' y='1000'>
                 <zone forceUpdate='true' h='9812' id='12' type-v2='text' w='98750' x='625' y='1000'>
                   <formatted-text>
                     <run bold='true' fontalignment='1' fontcolor='#ffffff' fontname='Tableau Bold' fontsize='28'>E-Commerce Electronics Store Sales Dashboard</run>
@@ -1770,7 +1770,7 @@
       </viewpoint>
       <simple-id uuid='{AA91140E-BF85-42ED-A707-28926B2BF21E}' />
     </window>
-    <window class='worksheet' maximized='true' name='Total Revenue by Category'>
+    <window class='worksheet' name='Total Revenue by Category'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -1939,7 +1939,7 @@
       </viewpoint>
       <simple-id uuid='{B72F8CD0-D5C6-4786-8FE9-2B47350FD6E3}' />
     </window>
-    <window class='dashboard' name='E-Commerce Electronics Store Sales Dashboard'>
+    <window class='dashboard' maximized='true' name='E-Commerce Electronics Store Sales Dashboard'>
       <viewpoints>
         <viewpoint name='Average Order Value KPI'>
           <zoom type='entire-view' />

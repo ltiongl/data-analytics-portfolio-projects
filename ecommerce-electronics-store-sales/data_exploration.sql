@@ -144,23 +144,40 @@ GROUP BY `year-month`;
 
 -- 2.3. Average Order Value (AOV)
 
+WITH cte_purchase AS (
 SELECT
-    ROUND(SUM(`price`) / COUNT(DISTINCT `user_session`), 2) AS average_order_value
+	`user_session`,
+    SUM(CASE WHEN `event_type` = 'purchase' THEN `price` ELSE 0 END) AS revenue,
+	SUM(CASE WHEN `event_type` = 'purchase' THEN 1 ELSE 0 END) AS num_purchase
 FROM `events_updated`
-WHERE `user_session` IS NOT NULL;
+WHERE `user_session` IS NOT NULL
+GROUP BY `user_session`
+)
+SELECT
+    ROUND(SUM(revenue) / SUM(CASE WHEN num_purchase > 0 THEN 1 ELSE 0 END), 2) AS average_order_value
+FROM cte_purchase;
 
--- Average order value is 266.12
+-- Average order value is 212.07
 
 -- Average Order Value (AOV) by month
 
+WITH cte_purchase AS (
 SELECT
 	DATE_FORMAT(`event_time`, '%Y-%m') AS `year-month`,
-    ROUND(SUM(`price`) / COUNT(DISTINCT `user_session`), 2) AS average_order_value
+	`user_session`,
+    SUM(CASE WHEN `event_type` = 'purchase' THEN `price` ELSE 0 END) AS revenue,
+	SUM(CASE WHEN `event_type` = 'purchase' THEN 1 ELSE 0 END) AS num_purchase
 FROM `events_updated`
 WHERE `user_session` IS NOT NULL
+GROUP BY `year-month`, `user_session`
+)
+SELECT
+	`year-month`,
+    ROUND(SUM(revenue) / SUM(CASE WHEN num_purchase > 0 THEN 1 ELSE 0 END), 2) AS average_order_value
+FROM cte_purchase
 GROUP BY `year-month`;
 
--- '2020-10': 191.56, '2020-11': 213.2, '2020-12': 249.77, '2021-01': 344.53, '2021-02': 329.58
+-- '2020-10': 135.46, '2020-11': 160.54, '2020-12': 187.2, '2021-01': 272.84, '2021-02': 278.18
 
 -- 2.4. Cart Abandonment Rate (CAR)
 
@@ -225,7 +242,7 @@ SELECT
 	`Year-Month`,
     ROUND(SUM(revenue), 2) AS `Total Revenue`,
 	ROUND(SUM(CASE WHEN num_purchase > 0 THEN 1 ELSE 0 END) / COUNT(`user_session`) * 100.0, 2) AS `Conversion Rate`,
-    ROUND(SUM(revenue) / COUNT(`user_session`), 2) AS `Average Order Value`,
+    ROUND(SUM(revenue) / SUM(CASE WHEN num_purchase > 0 THEN 1 ELSE 0 END), 2) AS `Average Order Value`,
     ROUND((1 - (SUM(CASE WHEN num_purchase > 0 THEN 1 ELSE 0 END) / SUM(CASE WHEN num_cart > 0 THEN 1 ELSE 0 END))) * 100.0, 2) AS `Cart Abandonment Rate`
 FROM cte_purchase
 GROUP BY `Year-Month`;

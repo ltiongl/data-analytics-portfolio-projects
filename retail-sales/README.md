@@ -39,7 +39,7 @@ Key performance indicators (KPIs) reveal consistent total sales revenue across 2
 Below is the overview page from the Tableau dashboard. The entire interactive dashboard can be found [here](https://public.tableau.com/app/profile/lily.tiong/viz/retail_sales_17264041202470/SalesDashboard).
 
 <kbd>
-<img src="https://github.com/user-attachments/assets/3f633865-b378-4cd2-b20b-7b83b9c66cb1">
+<img src="https://github.com/user-attachments/assets/31078b18-af08-4375-a485-1962af8e11df">
 </kbd> 
 
 ### Impact of Marketing Spend 

@@ -36,10 +36,10 @@ The SQL queries utilized to inspect and perform quality check are available [her
 
 Key performance indicators (KPIs) reveal consistent total sales revenue across 2022 and 2023, with a slight 0.4% decline in total marketing spend in 2023. The Return on Marketing Investment (ROMI) metric shows negative performance, at -1.17 in 2022 and -1.11 in 2023. Notably, sales demonstrated stronger performance during holidays and weekends, highlighting the importance of these periods for driving revenue.
 
-Below is the overview page from the Tableau dashboard. The entire interactive dashboard can be found [here](https://public.tableau.com/app/profile/lily.tiong/viz/retail_sales_17264041202470/SalesDashboard?publish=yes).  
+Below is the overview page from the Tableau dashboard. The entire interactive dashboard can be found [here](https://public.tableau.com/app/profile/lily.tiong/viz/retail_sales_17264041202470/SalesDashboard).
 
 <kbd>
-<img src="https://github.com/user-attachments/assets/5b5f9313-9980-4504-8b9a-63a03073989b">
+<img src="https://github.com/user-attachments/assets/3f633865-b378-4cd2-b20b-7b83b9c66cb1">
 </kbd> 
 
 ### Impact of Marketing Spend 

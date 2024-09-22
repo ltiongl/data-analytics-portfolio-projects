@@ -371,8 +371,7 @@ LIMIT 5;
 * Conversely, the implementation of a discount strategy consistently results in lower average sales revenue compared to periods without discounts, suggesting that discount strategies do not positively influence sales revenue.
 
 ### Data Visualization
-The data is visualized in an interactive Tableau dashboard, which can be explored [here](https://public.tableau.com/app/profile/lily.tiong/viz/retail_sales_17264041202470/SalesDashboard?publish=yes).     
-  
+The data is visualized in an interactive Tableau dashboard, which can be explored [here](https://public.tableau.com/app/profile/lily.tiong/viz/retail_sales_17264041202470/SalesDashboard).     
 The dashboard presents Key Performance Indicators (KPIs) of `Total Sales Revenue` and `Total Marketing Spend`, with a performance comparison between 2022 and 2023.   
    
 The `Total Sales Revenue` KPI indicates a nearly flat growth rate, with sales revenue showing almost no increase between 2022 and 2023. In contrast, total marketing spend decreased by approximately 0.04% in 2023 compared to 2022.   
@@ -382,11 +381,11 @@ The overall ROMI (Return on Marketing Investment) metric is negative for both ye
 Regarding the impact of discount strategies, only the holiday period in 2023 showed a slight improvement in sales revenue, though the increase was not substantial.    
 
 <kbd>
-<img src="https://github.com/user-attachments/assets/5b5f9313-9980-4504-8b9a-63a03073989b">
+<img src="https://github.com/user-attachments/assets/31078b18-af08-4375-a485-1962af8e11df">
 </kbd> 
 <br><br>    
 <kbd>
-<img src="https://github.com/user-attachments/assets/8720141f-3b18-4579-938a-ed79cfdd7c2c">
+<img src="https://github.com/user-attachments/assets/133573d6-68df-4f1f-b03c-636abdc44da8">
 </kbd> 
 
 ### Summary of Findings from MySQL and Tableau Analysis

@@ -2,14 +2,15 @@
 
 ## Project Background
 
-This project conducts an in-depth analysis of user behavior over a 5-month period, from `2019-10-01` to `2021-02-28`, using a dataset containing `885,129` rows from a large online electronics store. The dataset captures various critical aspects of user interactions, including event time, event type, product ID, category ID, category code, brand, price, user ID, and user session. Event types categorize user behavior into three key actions: viewing products (`view`), adding items to the cart (`cart`), and completing a purchase (`purchase`). A session resulting in one or more purchases is considered a single order.
+This project conducts an in-depth analysis of user behavior over a 5-month period, from `2019-10-01` to `2021-02-28`, using a dataset containing 885,129 rows from a large online electronics store. The dataset captures various critical aspects of user interactions, including event time, event type, product ID, category ID, category code, brand, price, user ID, and user session. Event types categorize user behavior into three key actions: viewing products (`view`), adding items to the cart (`cart`), and completing a purchase (`purchase`). A session resulting in one or more purchases is considered a single order.
 
 The primary goal of this analysis is to extract actionable insights that will contribute to the store's commercial success. By examining user behavior, marketing performance, and sales trends, the project aims to provide valuable recommendations for optimizing business strategies and driving growth.
 
 Key areas of analysis include:
-* `Sales Trends Analysis`: Evaluation of historical sales patterns, focusing on Revenue and Average Order Value (AOV).
-* `User Behavior Analysis`: Examination of user actions and engagement throughout the shopping journey, focusing on Conversion Rate (CR) and Cart Abandonment Rate (CAR).
-* `Product Level Analysis`: Determination of each product category impact on sales and revenue.
+* `Sales Trends Analysis`: Evaluation of historical sales patterns, emphasizing Revenue and Average Order Value (AOV).
+* `User Behavior Analysis`: Examination of user actions and engagement throughout the shopping journey, with a focus on Conversion Rate (CR) and Cart Abandonment Rate (CAR).
+* `Product Level Analysis`: Assessment of the impact of each product category on overall sales and revenue.
+* `Time Analysis`: Investigation of how sales performance and user behaviors vary across different hours of the day, identifying peak shopping times and trends in user engagement.
 
 An interactive Tableau dashboard used to report and explore sales trends can be found [here](https://public.tableau.com/app/profile/lily.tiong/viz/ecommerce_electronics_store_sales/E-CommerceElectronicsStoreSalesDashboard).
 

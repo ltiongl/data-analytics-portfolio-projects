@@ -71,7 +71,7 @@ Impact of marketing spend is evaluated using ROMI metric.
 * However, the model's R² score was 0.542, indicating there is room for improvement in predictive accuracy.
   
 <kbd>
-<img width="500" src="https://github.com/user-attachments/assets/5e74e54c-0b97-4472-a861-790e68ce4bb3">
+<img width="500" src="https://github.com/user-attachments/assets/e2762f6e-ee60-42aa-b211-179c4c4ea0f1">
 </kbd>
 
 ## Recommendations

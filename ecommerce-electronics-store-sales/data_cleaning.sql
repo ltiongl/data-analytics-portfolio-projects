@@ -17,7 +17,7 @@ LIMIT 5;
 -- 1.1. Verify Duplicates
 
 WITH cte_duplicates AS (
-	SELECT
+    SELECT
         *,
         ROW_NUMBER() OVER(PARTITION BY `event_time`, `event_type`, `category_id`, `category_code`, 
                                        `brand`, `price`, `user_id`, `user_session`) AS row_num
@@ -36,7 +36,7 @@ FROM `events_staging`;
 -- Determine duplicates
 
 WITH cte_duplicates AS (
-	SELECT
+    SELECT
         *,
         ROW_NUMBER() OVER(PARTITION BY `event_time`, `event_type`, `category_id`, `category_code`, 
                                        `brand`, `price`, `user_id`, `user_session`) AS row_num
@@ -50,10 +50,10 @@ WHERE row_num > 1;
 -- Verify the duplicates validation randomly
 
 SELECT
-	*
+    *
 FROM `events_staging`
 WHERE `event_time` = '2021-02-03 04:10:24 UTC' AND
-	  `event_type` = 'view' AND 
+      `event_type` = 'view' AND 
       `product_id` = '695598' AND 
       `category_id` = '2144415921169498184' AND
       `category_code` = '' AND
@@ -68,9 +68,9 @@ WHERE `event_time` = '2021-02-03 04:10:24 UTC' AND
 
 CREATE TABLE `events_updated` AS
 SELECT
-	*,
-	ROW_NUMBER() OVER(PARTITION BY `event_time`, `event_type`, `category_id`, `category_code`, 
-									`brand`, `price`, `user_id`, `user_session`) AS row_num
+    *,
+    ROW_NUMBER() OVER(PARTITION BY `event_time`, `event_type`, `category_id`, `category_code`, 
+				   `brand`, `price`, `user_id`, `user_session`) AS row_num
 FROM `events_staging`;
 
 DELETE FROM `events_updated`
@@ -84,7 +84,7 @@ DROP COLUMN row_num;
 -- Verify duplicates removal
 
 WITH cte_duplicates AS (
-	SELECT
+    SELECT
         *,
         ROW_NUMBER() OVER(PARTITION BY `event_time`, `event_type`, `category_id`, `category_code`, 
                                        `brand`, `price`, `user_id`, `user_session`) AS row_num
@@ -114,7 +114,7 @@ WHERE
     `event_type` IS NULL OR 
     `product_id` IS NULL OR 
     `category_id` IS NULL OR
-	`category_code` IS NULL OR 
+    `category_code` IS NULL OR 
     `brand` IS NULL OR 
     `price` IS NULL OR
     `user_id` IS NULL OR
@@ -125,7 +125,7 @@ WHERE
 -- Verify empty data
 
 SELECT 
-	SUM(CASE WHEN `event_time` = '' THEN 1 ELSE 0 END) AS event_time_blank_count,
+    SUM(CASE WHEN `event_time` = '' THEN 1 ELSE 0 END) AS event_time_blank_count,
     SUM(CASE WHEN `event_type` = '' THEN 1 ELSE 0 END) AS event_type_blank_count,
     SUM(CASE WHEN `product_id` = '' THEN 1 ELSE 0 END) AS product_id_blank_count,
     SUM(CASE WHEN `category_id` = '' THEN 1 ELSE 0 END) AS category_id_blank_count,
@@ -156,7 +156,7 @@ SET `category` = 'others'
 WHERE `category` = '';
 
 SELECT 
-	COUNT(`category`) AS count
+    COUNT(`category`) AS count
 FROM `events_updated`
 WHERE `category` = 'others';
 
@@ -176,7 +176,7 @@ FROM `events_updated`
 LIMIT 100;
 
 SELECT 
-	COUNT(DISTINCT `user_id`) AS user_id_count,
+    COUNT(DISTINCT `user_id`) AS user_id_count,
     COUNT(DISTINCT `user_session`) AS user_session_count
 FROM `events_updated`;
 
@@ -187,7 +187,7 @@ SET `user_session` = NULL
 WHERE `user_session` = '';
 
 SELECT
-	SUM(CASE WHEN `user_session` IS NULL THEN 1 ELSE 0 END) AS null_count
+    SUM(CASE WHEN `user_session` IS NULL THEN 1 ELSE 0 END) AS null_count
 FROM `events_updated`;
 
 -- 1.3. Fix data type
@@ -211,7 +211,7 @@ DESCRIBE `events_updated`;
 -- Check `event_time` range
 
 SELECT
-	MIN(DATE(`event_time`)) AS min_date,
+    MIN(DATE(`event_time`)) AS min_date,
     MAX(DATE(`event_time`)) AS max_date
 FROM `events_updated`;
 
@@ -225,7 +225,7 @@ WHERE DATE_FORMAT(`event_time`, '%Y-%m') = '2020-09';
 -- Verify change
 
 SELECT
-	MIN(DATE(`event_time`)) AS min_date,
+    MIN(DATE(`event_time`)) AS min_date,
     MAX(DATE(`event_time`)) AS max_date
 FROM `events_updated`;
 

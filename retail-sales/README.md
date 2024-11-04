@@ -48,7 +48,7 @@ Impact of marketing spend is evaluated using ROMI metric.
 * In 2022, the electronics category was the only one with positive ROMI at 1.25 USD, while in 2023, clothing was the only category with a positive ROMI of 0.61 USD. Electronics, however, became the worst-performing category in 2023, with a ROMI of -2.13 USD.
 * By holiday effect, holidays in 2022 recorded a strong ROMI of +17.34 USD, but ROMI turned negative for both holiday and non-holiday periods in 2023.
 * ROMI also varied by day of the week, with Sunday and Tuesday showing positive ROMI in 2022 (+1.79 USD and +0.23 USD, respectively). However, in 2023, these days turned negative, while Thursday, Friday, and Saturday showed positive ROMI.
-* The heatmap below further highlights the lack of correlation between marketing spend and sales revenue, demonstrating zero correlation between these variables.d and sales revenue is further proved by the heatmap below, where there is 0 correlation between marketing spend and sales revenue.
+* The heatmap below further highlights the lack of correlation between marketing spend and sales revenue, demonstrating zero correlation between these variables and sales revenue is further proved by the heatmap below, where there is 0 correlation between marketing spend and sales revenue.
 
 <kbd>
 <img width="500" src="https://github.com/user-attachments/assets/20df6623-7619-45df-aa41-2a3d485f3f52">

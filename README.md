@@ -3,6 +3,7 @@
 ## Index
 * [Project 1: Retail Sales Data Analysis](#project-1-retail-sales-data-analysis)
 * [Project 2: E-Commerce Electronic Store Sales Data Analysis](#project-2-e-commerce-electronic-store-sales-data-analysis)
+* [Project 3: Tokyo Temperature Forecast Model](#project-3-tokyo-temperature-forecast-model)
 
 ---
 
@@ -28,3 +29,16 @@ This project analyzes the sales data of an e-commerce electronics store from Oct
 The analysis is conducted using MySQL for data cleaning and exploration, complemented by a visualization dashboard to effectively summarize and present the results.
 
 ---
+
+## Project 3: [Tokyo Temperature Forecast Model](https://github.com/ltiongl/data-analytics-portfolio-projects/blob/main/tokyo-temperature-forecast)
+
+This project focuses on developing and evaluating three `Long Short-Term Memory` (LSTM) models to forecast Tokyo's daily temperature using historical weather data. The dataset, sourced from `Visual Crossing`, spans from 1990 to 2024 and includes a wide range of meteorological features such as temperature, humidity, precipitation, wind speed, solar radiation, and UV index.
+
+The models differ in their feature sets:
+* Baseline Model: Uses fundamental weather features from the entire dataset (12,753 records).
+* Solar-Enhanced Model: Incorporates solar-related features, limited to data from 2010 to 2024 (5,448 records).
+* Correlated Features Model: Focuses on a reduced set of key correlated features for simplicity, using the full dataset.
+  
+All models achieved comparable forecasting accuracy, with a `Mean Squared Error` (MSE) of 0.003. This finding demonstrates that simpler models with fewer input features are as effective as more complex ones for temperature prediction.
+
+This project provides a foundation for robust weather forecasting and highlights the potential for efficient and accurate temperature prediction with minimal inputs.

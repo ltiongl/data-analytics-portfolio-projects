@@ -1,4 +1,4 @@
-# Data Analytics Portfolio Projects
+# Data Analytics and Machine Learning Portfolio Projects
 
 ## Index
 * [Project 1: Retail Sales Data Analysis](#project-1-retail-sales-data-analysis)
